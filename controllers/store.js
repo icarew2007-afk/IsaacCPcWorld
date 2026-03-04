@@ -13,7 +13,7 @@ const playlist = {
       singlePlaylist: playlistStore.getPlaylist(playlistId)
     };
 
-    response.render('playlist', viewData);
+  response.render('store', viewData);
   },
 };
 
