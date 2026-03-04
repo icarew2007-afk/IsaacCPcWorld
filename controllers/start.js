@@ -2,14 +2,15 @@
 
 import logger from "../utils/logger.js";
 import appStore from "../models/app-store.js";
+import computerStore from "../models/computer-store.js";
 
 const start = {
   createView(request, response) {
     logger.info("Start page loading!");
     
     const viewData = {
-      title: "Welcome to the Playlist app!",
-      info: appStore.getAppInfo()
+      title: "Welcome to the Isaac's PC World app!",
+      info: computerStore.getAppInfo()
     };
     
     //logger.debug(viewData);

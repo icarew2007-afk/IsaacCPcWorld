@@ -1,7 +1,8 @@
 'use strict';
 
 import logger from '../utils/logger.js';
-import playlistStore from '../models/playlist-store.js';
+import playlistStore from '../models/computer-store.js';
+import computerStore from '../models/computer-store.js';
 
 const playlist = {
   createView(request, response) {
@@ -10,7 +11,7 @@ const playlist = {
     
     const viewData = {
       title: 'Playlist',
-      singlePlaylist: playlistStore.getPlaylist(playlistId)
+      singlePlaylist: computerStore.getComputer(playlistId)
     };
 
   response.render('store', viewData);
