@@ -1,0 +1,36 @@
+{{> menu id="about"}}
+
+<section class="ui left aligned middle aligned segment">
+  
+  <h2>Playlist App About</h2>
+  
+  <div class="ui three cards">
+    {{#each employee}}
+    <div class="ui card">
+    <div class="image">
+      <img src="{{image}}">
+    </div>
+
+    <div class="content">
+      <a class="header">{{fullname}}</a>
+
+      <div class="meta">
+        <span class="date">Joined in {{joined}}</span>
+      </div>
+
+      <div class="description">
+        {{fullname}} is a {{job}} living in {{city}}.
+      </div>
+    </div>
+
+    <div class="extra content">
+      <a>
+        <i class="user icon"></i>
+        {{mates}} contacts
+      </a>
+      </div>
+    </div>
+    {{/each}}
+  </div>
+
+</section>
