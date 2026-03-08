@@ -12,15 +12,31 @@
   <div class="right menu">
     <a id="dashboard" class="item" href="/dashboard">Categories</a>
     <a id="about" class="item" href="/about">About</a>
-  <a class="item" href="/computer/fav" title="Favourites"><i class="heart outline icon"></i></a>
+  
+    <a id="fav" class="item" href="/computer/fav" title="Favourites"><i class="heart outline icon"></i></a>
   </div>
 </nav>
 
 <script>
   // mark the active menu item; '{{id}}' is set by each view
   try {
+    // Prefer the explicit `{{id}}` set by the view (server-side).
     const el = document.querySelector('#{{id}}');
-    if (el) el.classList.add('active');
+    if (el) {
+      el.classList.add('active');
+    } else {
+      // Fallback: mark the menu item whose href matches the current path
+      const path = window.location.pathname.replace(/\/$/, ''); // strip trailing slash
+      const items = document.querySelectorAll('.ui.menu .item');
+      items.forEach(it => {
+        const href = it.getAttribute('href');
+        if (!href) return;
+        const clean = href.replace(/\/$/, '');
+        if (clean === path || (clean !== '' && path.startsWith(clean))) {
+          it.classList.add('active');
+        }
+      });
+    }
   } catch (e) {
     // ignore when id is not provided
   }
