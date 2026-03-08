@@ -1,14 +1,14 @@
 {
   "info": {
-    "appTitle": "Playlist Maker",
-    "version": 0.2,
+    "appTitle": "Isaac's PC World",
+    "version": 6.7,
     "creators": [
       {
         "name": "Isaac Carew",
-        "role": "Web Developer"
+        "role": "CEO"
       },
       {
-        "name": "A.N. Other",
+        "name": "Eoin Brosnan",
         "role": "Web Developer"
       }
     ],

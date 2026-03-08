@@ -1,0 +1,36 @@
+{{!-- Partial: renders a grid of product cards for a category or playlist
+     Expects `singleProduct.products` to be an array of product objects.
+     Each product may have `image`, `title`, `brand`, and `id` fields.
+-->
+{{#if singleProduct.products}}
+
+  <div class="ui three stackable cards">
+    {{#each singleProduct.products}}
+      <div class="card">
+        <div class="content">
+          {{#if image}}
+            <div class="ui centered image">
+              <img src="{{image}}" alt="{{title}}">
+            </div>
+          {{/if}}
+          <div class="header">{{title}}</div>
+          <div class="meta">{{brand}}</div>
+          <div class="description">
+            <!-- Optional description could go here -->
+          </div>
+        </div>
+        <div class="extra content">
+          <button type="button" class="ui mini icon button add-favourite-button" data-id="{{id}}" title="Add to favourites">
+            <i class="heart outline icon"></i>
+          </button>
+        </div>
+      </div>
+    {{/each}}
+  </div>
+
+{{else}}
+  <h3 class="ui message">
+    Empty product list!
+  </h3>
+
+{{/if}}

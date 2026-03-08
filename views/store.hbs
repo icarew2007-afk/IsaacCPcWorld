@@ -1,8 +1,27 @@
 {{> menu}}
 
 <section class="ui center aligned middle aligned scrolling segment">
-  <h2 class="ui header">
-    {{singlePlaylist.title}}
-  </h2>
-  {{> listsongs}}
+  <div class="ui container">
+    <div class="ui breadcrumb">
+      <a class="section" href="/">Home</a>
+      <i class="right angle icon divider"></i>
+      <a class="section" href="/dashboard">Categories</a>
+      <i class="right angle icon divider"></i>
+      <div class="active section">{{singlePlaylist.title}}</div>
+    </div>
+
+    <h2 class="ui header" style="margin-top:.6em;">
+      {{singlePlaylist.title}}
+    </h2>
+
+    {{#if isFavourites}}
+      <div style="margin-bottom: .6em;">
+        <a href="/favourites/clear" class="ui tiny red button" onclick="return confirm('Clear all favourites?');">Clear favourites</a>
+      </div>
+    {{/if}}
+
+    <p class="ui small">Browse products in this category. Click the heart to add a product to your favourites without leaving the page.</p>
+
+    {{> listofproducts}}
+  </div>
 </section>

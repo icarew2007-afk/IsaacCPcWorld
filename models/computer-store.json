@@ -1,51 +1,81 @@
 {
-  "playlistCollection": [
+  "computerCollection": [
     {
-      "id" : "01",
-      "title": "Beethoven Sonatas",
-      "songs": [
+      "id": "01",
+      "title": "Gaming Mice",
+      "products": [
         {
-          "id" : "04",
-          "title": "Piano Sonata No. 3",
-          "artist": "Beethoven"
+          "id": "04",
+          "title": "Logitech G502",
+          "brand": "Logitech",
+          "image": "/logitechg502.png"
         },
         {
-          "id" : "05",
-          "title": "Piano Sonata No. 7",
-          "artist": "Beethoven"
+          "id": "05",
+          "title": "Razer DeathAdder",
+          "brand": "Razer",
+          "image": "/razerdeathadder.png"
         },
         {
-          "id" : "06",
-          "title": "Piano Sonata No. 10",
-          "artist": "Beethoven"
+          "id": "06",
+          "title": "SteelSeries Rival 600",
+          "brand": "SteelSeries",
+          "image": "/steelseriesrival600.png"
         }
       ]
     },
     {
-      "id" : "02",
-      "title": "Beethoven Concertos",
-      "songs": [
+      "id": "02",
+      "title": "Gaming Keyboards",
+      "products": [
         {
-          "id" : "07",
-          "title": "Piano Concerto No. 0",
-          "artist": "Beethoven"
+          "id": "07",
+          "title": "Razer BlackWidow",
+          "brand": "Razer",
+          "image": "/razerblackwidow.png"
         },
         {
-          "id" : "08",
-          "title": "Piano Concerto No. 4",
-          "artist": "Beethoven"
+          "id": "08",
+          "title": "Corsair K95 RGB",
+          "brand": "Corsair",
+          "image": "/corsairk95.png"
         },
         {
-          "id" : "09",
-          "title": "Piano Concerto No. 6",
-          "artist": "Beethoven"
+          "id": "09",
+          "title": "Logitech G Pro X",
+          "brand": "Logitech",
+          "image": "/logitechgprox.png"
         }
       ]
     },
     {
-      "id" : "03",
-      "title": "Beethoven Unfinished Symphonies",
-      "songs": []
+      "id": "03",
+      "title": "Gaming Headphones",
+      "products": [
+        {
+          "id": "10",
+          "title": "HyperX Cloud II",
+          "brand": "HyperX",
+          "image": "/hyperxcloudii.png"
+        },
+        {
+          "id": "11",
+          "title": "Astro A50",
+          "brand": "Astro",
+          "image": "/astroa50.png"
+        },
+        {
+          "id": "12",
+          "title": "Turtle Beach Stealth 600",
+          "brand": "Turtle Beach",
+          "image": "/turtlebeachstealth600.png"
+        }
+      ]
+    },
+    {
+      "id": "fav",
+      "title": "Favourites",
+      "products": []
     }
   ]
 }

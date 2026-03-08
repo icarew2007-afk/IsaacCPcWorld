@@ -1,7 +1,7 @@
 'use strict';
 
 import logger from "../utils/logger.js";
-import playlistStore from "../models/computer-store.js";
+import computerStore from "../models/computer-store.js";
 
 const dashboard = {
   createView(request, response) {
@@ -9,10 +9,10 @@ const dashboard = {
     
     const viewData = {
       title: "Isaac's PC World Dashboard",
-      playlists: playlistStore.getAllPlaylists()
+      computers: computerStore.getAllComputers()
     };
     
-    logger.debug(viewData.playlists);
+    logger.debug(viewData.computers);
     
     response.render('dashboard', viewData);
   },

@@ -1,21 +1,26 @@
 'use strict';
 
 import logger from '../utils/logger.js';
-import playlistStore from '../models/computer-store.js';
+
 import computerStore from '../models/computer-store.js';
 
-const playlist = {
+const store = {
   createView(request, response) {
-    const playlistId = request.params.id;
-    logger.debug(`Playlist id = ${playlistId}`);
-    
+    const productId = request.params.id;
+    logger.debug(`Product id = ${productId}`);
+
+    const product = computerStore.getComputer(productId);
+
     const viewData = {
-      title: 'Playlist',
-      singlePlaylist: computerStore.getComputer(playlistId)
+      title: 'Product',
+      // provide both names so existing templates/partials keep working
+      singleProduct: product,
+      singlePlaylist: product,
+      isFavourites: product && product.id === 'fav'
     };
 
-  response.render('store', viewData);
+    response.render('store', viewData);
   },
 };
 
-export default playlist;
+export default store;

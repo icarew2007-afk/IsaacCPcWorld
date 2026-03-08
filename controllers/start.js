@@ -10,7 +10,8 @@ const start = {
     
     const viewData = {
       title: "Welcome to the Isaac's PC World app!",
-      info: computerStore.getAppInfo()
+      info: appStore.getAppInfo(),
+      favourites: computerStore.getComputer('fav')
     };
     
     //logger.debug(viewData);

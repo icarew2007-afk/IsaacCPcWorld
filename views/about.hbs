@@ -1,36 +1,45 @@
 {{> menu id="about"}}
 
-<section class="ui left aligned middle aligned segment">
-  
-  <h2>Playlist App About</h2>
-  
-  <div class="ui three cards">
-    {{#each employee}}
-    <div class="ui card">
-    <div class="image">
-      <img src="{{image}}">
+<section class="ui middle aligned segment">
+
+  <h2>About Isaac's PC World (Ignore the map saying Currys, this is a bug we are working on!)</h2>
+
+  <div class="ui stackable grid">
+    <div class="ten wide column">
+      <div class="ui cards">
+        {{#each employee}}
+          <div class="card">
+            <div class="image">
+              <img src="{{image}}" alt="{{fullname}}">
+            </div>
+
+            <div class="content">
+              <a class="header">{{fullname}}</a>
+
+              <div class="meta">
+                <span class="date">Joined in {{joined}}</span>
+              </div>
+
+              <div class="description">
+                {{fullname}} is the company's {{job}} living in {{city}}.
+              </div>
+            </div>
+
+            <div class="extra content">
+              <a>
+                <i class="user icon"></i>
+                {{mates}} contacts
+              </a>
+            </div>
+          </div>
+        {{/each}}
+      </div>
     </div>
 
-    <div class="content">
-      <a class="header">{{fullname}}</a>
-
-      <div class="meta">
-        <span class="date">Joined in {{joined}}</span>
-      </div>
-
-      <div class="description">
-        {{fullname}} is a {{job}} living in {{city}}.
+    <div class="six wide column">
+      <div class="ui segment">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d19543.28587686524!2d-7.185210838248928!3d52.24500501646955!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4842c5b852333cd7%3A0xb3fb5d548a78e3b2!2sCurrys!5e0!3m2!1sen!2sie!4v1772736377087!5m2!1sen!2sie" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
       </div>
     </div>
-
-    <div class="extra content">
-      <a>
-        <i class="user icon"></i>
-        {{mates}} contacts
-      </a>
-      </div>
-    </div>
-    {{/each}}
   </div>
-
 </section>

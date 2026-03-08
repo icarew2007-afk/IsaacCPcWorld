@@ -10,5 +10,135 @@ html {
 body {
   font-family: "Benton Sans", "Helvetica Neue", helvetica, arial, sans-serif;
   margin: 2em;
-  background-color: lightgrey;
+  /* IsaacPCWorld theme colors (lighter background) */
+  /* Light blue + light purple theme */
+  --pcw-bg: #d9efff;        /* slightly darker light blue background */
+  --pcw-surface: #f3ecff;   /* slightly darker light purple surface */
+  --pcw-accent: #2f8fe6;    /* slightly darker blue accent */
+  --pcw-accent-2: #7e55c9;  /* slightly darker purple accent */
+  --pcw-text: #0e2738;      /* slightly darker navy text */
+
+  background-color: var(--pcw-bg);
+  color: var(--pcw-text);
+}
+/* Layout tweaks for Semantic UI elements to match theme */
+.ui.menu, .ui.secondary.menu {
+  /* subtle gradient mixing blue and purple */
+  background: linear-gradient(90deg, rgba(77,166,255,0.06), rgba(180,140,255,0.04));
+  border: none;
+}
+.ui.menu .item,
+.ui.menu .item a {
+  color: var(--pcw-text) !important;
+}
+
+.ui.header h2, h2.ui.header, .ui.container h2 {
+  color: var(--pcw-accent) !important;
+}
+
+.ui.segment {
+  background: var(--pcw-surface);
+  border: 1px solid rgba(11,37,69,0.06);
+  box-shadow: 0 2px 6px rgba(11,37,69,0.04);
+}
+
+.card .content {
+  background: var(--pcw-surface);
+  color: var(--pcw-text);
+}
+
+/* Product thumbnail sizing: keep consistent card layout and preserve aspect via object-fit */
+.card .ui.image img,
+.card .ui.centered.image img {
+  width: 160px;
+  height: 120px;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto 0.6em;
+}
+
+@media (max-width: 480px) {
+  .card .ui.image img,
+  .card .ui.centered.image img {
+    width: 120px;
+    height: 90px;
+  }
+}
+
+.card .header {
+  color: var(--pcw-accent-2);
+}
+
+.ui.button {
+  background-color: var(--pcw-accent) !important;
+  color: #ffffff !important;
+  border: none !important;
+}
+
+.ui.button:hover {
+  /* slightly deeper blue on hover */
+  background-color: #2576c6 !important;
+}
+
+.ui.message.positive {
+  background-color: rgba(47,143,230,0.10) !important;
+  color: var(--pcw-text) !important;
+  border-left: 4px solid var(--pcw-accent) !important;
+}
+
+/* Modern storefront layout helpers */
+/* Make the top menu act like a sticky app header */
+.app-header {
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  backdrop-filter: blur(3px);
+  background: rgba(255,255,255,0.95);
+  border-bottom: 1px solid rgba(11,37,69,0.04);
+}
+
+/* Ensure main content is offset from the sticky header */
+.site-main {
+  padding-top: 80px; /* header height + spacing */
+  padding-bottom: 48px;
+}
+
+.hero {
+  background: linear-gradient(180deg, rgba(240,250,255,0.7), rgba(250,245,255,0.7));
+  border-radius: 8px;
+  padding: 2.2rem 0;
+  margin-top: .6rem;
+  box-shadow: 0 6px 18px rgba(11,37,69,0.03);
+}
+
+.site-main-content {
+  margin-top: 1.2rem;
+}
+
+/* Right sidebar styling */
+.right-sidebar {
+  position: sticky;
+  top: 96px; /* keep below the header */
+  padding: 1rem;
+  box-shadow: 0 2px 8px rgba(11,37,69,0.04);
+  border-radius: 6px;
+  background: var(--pcw-surface);
+}
+
+/* Slightly larger hero CTA on small screens */
+@media (max-width: 600px) {
+  .site-main { padding-top: 120px; }
+  .hero { padding: 1.2rem; }
+  .card .ui.centered.image img { width: 120px; height: 90px; }
+}
+
+/* Statistics tweaks */
+.ui.statistics .statistic .value, .ui.statistics .statistic .label {
+  color: var(--pcw-text) !important;
+}
+
+/* Footer spacing */
+footer {
+  margin-top: 2em;
+  color: rgba(11,37,69,0.6);
 }

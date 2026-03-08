@@ -1,110 +1,62 @@
 {{> menu id="start"}}
 
-<section class="ui center aligned middle aligned segment">
-  <h2>Welcome to the Playlist App!</h2>
-    <p>
-      This app will allow users to create and maintain a collection of playlists.
-    </p>
-  
-    <img src = "/Wallpaper.png" class = "ui centered image">
-
-      <div class="ui five statistics" style="margin-top: 1em;">
-    
-  {{#with info}}
-     
-    <div class="statistic">
-      <div class="value">
-        <i class="music icon"></i> 
+<section class="hero ui vertical segment">
+  <div class="ui container">
+    <div class="ui stackable grid">
+      <div class="ten wide column">
+        <h1 class="ui header" style="font-size:2.2rem;">Welcome to Isaac's PC World</h1>
+        <p class="ui large">Discover top gaming mice, keyboards and audio equipment. Save favourites and come back later — everything you need to build the perfect setup.</p>
+        <div style="margin-top:1.2rem;">
+          <a class="ui big primary button" href="/dashboard"><i class="box icon"></i> Browse Categories</a>
+          <a class="ui big button" href="/computer/fav" style="margin-left:.6rem;"><i class="heart icon"></i> View Favourites</a>
+        </div>
       </div>
-      <div class="label">
-        App Title: <br>
-        {{appTitle}}
+      <div class="six wide column">
+        <img src="/isaacspcworld.png" class="ui fluid image" alt="Isaac's PC World logo">
       </div>
     </div>
-    
-    <div class="statistic">
-      <div class="value">
-        <i class="code branch icon"></i> 
-      </div>
-      <div class="label">
-        App Version: <br>
-        Version {{version}}
-      </div>
-    </div> 
-     
-    <div class="statistic">
-      <div class="value">
-        <i class="map pin icon"></i> 
-      </div>
-      <div class="label">
-        Made in: <br>
-        {{location}}
-      </div>
-    </div> 
-	
-    <div class="statistic">
-      <div class="value">
-        <i class="user icon"></i> 
-      </div>
-      <div class="label">
-        Created by: <br>
-        {{creators.0.name}}
-      </div>
-    </div>
-	
-    <div class="statistic">
-      <div class="value">
-        <i class="user plus icon"></i> 
-      </div>
-      <div class="label">
-        With help from: <br>
-        {{creators.1.name}}
-      </div>
-    </div>
-	
-  {{/with}}
-  
-</div>
-
-    
-    <!-- Other statistics will go here -->    <div class="statistic">
-      <div class="value">
-        <i class="code branch icon"></i> 
-      </div>
-      <div class="label">
-        App Version: <br>
-        Version {{info.version}}
-      </div>
-    </div>    
-    <div class="statistic">
-      <div class="value">
-        <i class="map pin icon"></i> 
-      </div>
-      <div class="label">
-        Made in: <br>
-        {{info.location}}
-      </div>
-    </div>    
-    <div class="statistic">
-      <div class="value">
-        <i class="user icon"></i> 
-      </div>
-      <div class="label">
-        Created by: <br>
-        {{info.creators.0.name}}
-      </div>
-    </div> 
-    <div class="statistic">
-      <div class="value">
-        <i class="user plus icon"></i> 
-      </div>
-      <div class="label">
-        With help from: <br>
-        {{info.creators.1.name}}
-      </div>
-    </div> 
-
-   
   </div>
-
 </section>
+
+<!-- Favourites/info segment -->
+<section class="ui container" style="margin-top:1.2rem;">
+  <div class="ui segment">
+    <div class="ui grid stackable">
+      <div class="ten wide column">
+        <h4 class="ui header">Welcome back</h4>
+        <p>Use the Browse Categories button above to explore products. Your favourites are available at any time.</p>
+      </div>
+      <div class="six wide column">
+        <div class="ui right floated small segment">
+          <h4 class="ui header">Your Favourites</h4>
+          {{#if favourites.products.length}}
+            <p><strong>{{favourites.products.length}}</strong> items saved</p>
+            <a class="ui tiny button" href="/computer/{{favourites.id}}"><i class="heart icon"></i> Open Favourites</a>
+          {{else}}
+            <p>No favourites yet</p>
+            <a class="ui tiny primary button" href="/dashboard"><i class="search icon"></i> Browse products</a>
+          {{/if}}
+          <div class="ui divider"></div>
+          <h5 class="ui header">Store Info</h5>
+          {{#with info}}
+            <p><strong>{{#if appTitle}}{{appTitle}}{{else}}Isaac's PC World{{/if}}</strong></p>
+            <p>Version: {{version}}</p>
+            <p>Location: {{location}}</p>
+            {{#if creators}}
+              <div style="margin-top:.6rem;">
+                <strong>Team</strong>
+                <div class="ui list" style="margin-top:.3rem;">
+                  {{#each creators}}
+                    <div class="item">{{name}} — <small>{{role}}</small></div>
+                  {{/each}}
+                </div>
+              </div>
+            {{/if}}
+          {{/with}}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+

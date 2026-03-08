@@ -1,29 +1,28 @@
 {{> menu id="dashboard"}}
 
 <section class="ui left aligned middle aligned segment">
-  
-  <h2>Playlist App Dashboard</h2>
-  
-  {{#unless playlists}}
+  <h2>Product Categories</h2>
+  <p class="ui small">Browse categories below — click a category to view available products and add them to your favourites.</p>
+
+  {{#unless computers}}
     <h3 class="ui message">
-      Start adding your playlists!
+      No categories available yet. Add some products!
     </h3>
   {{/unless}}
 
-  {{#each playlists}}
-    <section class="ui left aligned middle aligned segment">
-
-      <h3 class="ui header">
-        {{title}}
-      </h3>
-      {{#if songs.length}}
-        <p>Total Songs: {{songs.length}}</p>
-      {{else}}
-        <p>Empty Playlist!</p>
-      {{/if}}
-      <a href="/playlist/{{id}}"> <i class="open folder outline black icon"></i> </a>
-
-    </section>
-  {{/each}}
+  <div class="ui three stackable cards" style="margin-top: .6em;">
+    {{#each computers}}
+      <div class="card">
+        <div class="content">
+          <div class="header">{{title}}</div>
+          <div class="meta">{{#if products.length}}Products: {{products.length}}{{else}}No Products{{/if}}</div>
+          <div class="description" style="margin-top:.5em;color: rgba(0,0,0,0.6);">Great selection of {{title}} — top brands and tested gear.</div>
+        </div>
+        <div class="extra content">
+          <a href="/computer/{{id}}" class="ui tiny primary button">Browse <i class="box icon"></i></a>
+        </div>
+      </div>
+    {{/each}}
+  </div>
 
 </section>
