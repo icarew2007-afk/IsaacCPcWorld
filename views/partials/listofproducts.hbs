@@ -1,5 +1,5 @@
 {{#if singleProduct.products}}
-
+  <form class="ui form" action="/computer/{{singleProduct.id}}/updateproducts" method="POST">
   <div class="ui three stackable cards">
     {{#each singleProduct.products}}
       <div class="card">
@@ -22,11 +22,14 @@
           <button type="button" class="ui mini icon button delete-product-button" data-id="{{id}}" title="Delete product">
             <i class="trash icon"></i>
           </button>
+          <a href="/computer/{{../singleProduct.id}}/editproduct/{{id}}" class="ui mini icon button" title="Edit product">
+            <i class="edit icon"></i>
+          </a>
         </div>
       </div>
     {{/each}}
   </div>
-
+  </form>
 {{else}}
   <h3 class="ui message">
     Empty product list!

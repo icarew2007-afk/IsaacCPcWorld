@@ -1,3 +1,4 @@
+  
 'use strict';
 
 import { v4 as uuidv4 } from 'uuid';
@@ -77,11 +78,31 @@ const computerStore = {
     this.store.removeItem(this.collection, id);
   },
 
+
+  updateProduct(categoryId, productId, updatedFields) {
+    const category = this.getComputer(categoryId);
+    if (!category) return;
+    const product = category.products.find(p => p.id === productId);
+    if (product) {
+      Object.assign(product, updatedFields);
+      this.store.db.write();
+    }
+  },
+
   removeCategory(id) {
     const category = this.getComputer(id);
     this.store.removeCollection(this.collection, category);
   },
 
+  updateProduct(categoryId, productId, updatedFields) {
+    const category = this.getComputer(categoryId);
+    if (!category) return;
+    const product = category.products.find(p => p.id === productId);
+    if (product) {
+      Object.assign(product, updatedFields);
+      this.store.db.write();
+    }
+  },
 
 };
 

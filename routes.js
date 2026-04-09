@@ -1,3 +1,5 @@
+
+
 'use strict';
 
 import express from 'express';
@@ -26,5 +28,7 @@ router.get('/sortData', dashboard.createView);
 router.get('/stats', stats.createView);
 router.get('/computer/:id/deleteproduct/:productid', computerStore.removeProduct);
 router.get('/dashboard/deletecategory/:id', dashboard.deleteCategory);
+router.post('/computer/:id/editproduct/:productid', store.updateProduct);
+router.get('/computer/:id/editproduct/:productid', store.editProduct);
 
 export default router;
