@@ -35,7 +35,16 @@ const store = {
     computerStore.addProduct(newProduct);
     response.redirect('/computer/' + productId);
 },
+deleteProduct(request, response) {
+    const productId = request.params.id;
+    logger.debug(`Deleting Product ${productId}`);
+    computerStore.removeProduct(productId);
+    response.redirect('/dashboard');
+},
 };
+
+
+
 
 export default store;
   

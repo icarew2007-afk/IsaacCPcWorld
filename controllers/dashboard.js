@@ -59,6 +59,14 @@ const dashboard = {
     response.redirect('/dashboard');
 },
 
+deleteCategory(request, response) {
+    const categoryId = request.params.id;
+    logger.debug(`Deleting Category ${categoryId}`);
+    computerStore.removeComputer(categoryId);
+    response.redirect("/dashboard");
+},
+
+
 };
 
 export default dashboard;

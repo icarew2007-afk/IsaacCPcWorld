@@ -72,7 +72,15 @@ const computerStore = {
     return this.store.findBy(
       this.collection,
       (computer => computer.title.toLowerCase().includes(search.toLowerCase())))
-}
+  },
+  removeProduct(id) {
+    this.store.removeItem(this.collection, id);
+  },
+
+  removeCategory(id) {
+    const category = this.getComputer(id);
+    this.store.removeCollection(this.collection, category);
+  },
 
 
 };
