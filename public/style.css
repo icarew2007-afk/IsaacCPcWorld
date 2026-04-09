@@ -142,3 +142,10 @@ footer {
   margin-top: 2em;
   color: rgba(11,37,69,0.6);
 }
+
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5em;
+}

@@ -1,0 +1,65 @@
+{{> menu id="stats"}}
+
+<section class="ui center aligned middle aligned segment">
+
+  <h2>Computer Store App Statistics</h2>
+
+  <h3 class="ui header">
+    Computer Store Statistics
+  </h3>
+  <p>
+    The computer store now contains: 
+  </p>
+  {{#with stats}}
+   <div class="ui center aligned grid">
+    <div class = "ui sixteen wide column">
+        <div class="ui centered four statistics">
+          <div class="ui statistic">
+            <div class="value">
+              <i class="computer icon"></i> 
+            </div>
+            <div class="label">
+              {{displayNumComputers}} categories
+            </div>
+          </div>
+          <div class="ui red statistic">
+            <div class="value">
+              <i class="mouse icon"></i> 
+            </div>
+            <div class="label">
+              {{displayNumProducts}} products
+            </div>
+          </div> 
+          <div class="ui blue statistic">
+            <div class="value">
+              <i class="balance scale icon"></i> 
+            </div>
+            <div class="label">
+              Average products per <br> category: {{displayAverage}}
+            </div>
+          </div>
+          <div class="ui green statistic">
+            <div class="value">
+              <i class="heart icon"></i>
+            </div>
+            <div class="label">
+              {{displayNumFavourites}} in favourites
+            </div>
+          </div>
+        </div>
+        <div class="ui segment" style="margin-top:2em;">
+          <h4 class="ui header">Favourite Products</h4>
+          {{#if favouriteProducts.length}}
+            <ul class="ui list">
+              {{#each favouriteProducts}}
+                <li><strong>{{title}}</strong> <span style="color:rgba(0,0,0,0.5)">({{brand}})</span></li>
+              {{/each}}
+            </ul>
+          {{else}}
+            <p>No products in favourites.</p>
+          {{/if}}
+        </div>
+    </div>
+   </div>
+  {{/with}}
+</section>

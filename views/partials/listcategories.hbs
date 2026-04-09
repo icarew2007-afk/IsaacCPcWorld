@@ -1,0 +1,64 @@
+
+<section class="ui left aligned middle aligned segment">
+  <section class="dashboard-header">
+
+  <h2 class="title">Product Categories Dashboard</h2>
+
+        <form action="/searchCategory" method="GET" class="ui form">
+        
+      <div class="ui inline fields">
+        <div class="field">
+          <input type="text" name="searchTerm" placeholder="Search by title..." value="{{search}}">
+        </div>
+
+        <div class="field">
+          <label>Sort by:</label>
+          <select class="ui dropdown" name="sort" onchange="this.form.submit()">
+            <option value="title" {{#if titleSelected}}selected{{/if}}>Title</option>
+            <option value="products" {{#if productsSelected}}selected{{/if}}>Number of products</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label>Order:</label>
+          <select class="ui dropdown" name="order" onchange="this.form.submit()">
+            <option value="asc" {{#if ascSelected}}selected{{/if}}>↑</option>
+            <option value="desc" {{#if descSelected}}selected{{/if}}>↓</option>
+          </select>
+        </div>
+      </div>
+
+    </form>
+
+
+</section>
+
+  {{#unless search}}
+  {{#unless computers}}
+    <h3 class="ui message">
+       Start adding your categories!
+    </h3>
+  {{/unless}}
+{{/unless}}
+
+
+  {{#each computers}}
+    <section class="ui left aligned middle aligned segment">
+      <h3 class="ui header">
+        {{title}}
+      </h3>
+      {{#if products}}
+        <p>
+          Total products: {{products.length}}
+        </p>
+      {{else}}
+        <p>
+          Empty category!
+        </p>
+      {{/if}}
+      <a href="/computer/{{id}}">
+         <i class="ui open folder outline black icon"></i>
+      </a>
+    </section>
+  {{/each}}
+</section>

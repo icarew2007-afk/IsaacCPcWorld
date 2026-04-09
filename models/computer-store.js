@@ -1,5 +1,6 @@
 'use strict';
 
+import { v4 as uuidv4 } from 'uuid';
 import logger from '../utils/logger.js';
 import JsonStore from './json-store.js';
 
@@ -14,7 +15,15 @@ const computerStore = {
   },
   getComputer(id) {
     return this.store.findOneBy(this.collection, (computer => computer.id === id));
-},
+  },
+  addCategory(category) {
+    this.store.addCollection(this.collection, category);
+  },
+
+  addComputer(id, computer) {
+    computer.id = id;
+    return this.store.addItem(this.collection, computer);
+  },
 
   async addToFavourites(productId) {
     // find the product anywhere in the collection
@@ -59,6 +68,14 @@ const computerStore = {
     return true;
   },
 
+  searchComputer(search) {
+    return this.store.findBy(
+      this.collection,
+      (computer => computer.title.toLowerCase().includes(search.toLowerCase())))
+}
+
+
 };
+
 
 export default computerStore;

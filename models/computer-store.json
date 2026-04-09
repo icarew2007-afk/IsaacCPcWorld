@@ -75,7 +75,14 @@
     {
       "id": "fav",
       "title": "Favourites",
-      "products": []
+      "products": [
+        {
+          "id": "12",
+          "title": "Turtle Beach Stealth 600",
+          "brand": "Turtle Beach",
+          "image": "/turtlebeachstealth600.png"
+        }
+      ]
     }
   ]
 }
