@@ -3,20 +3,26 @@
 import logger from "../utils/logger.js";
 import appStore from "../models/app-store.js";
 import computerStore from "../models/computer-store.js";
+import accounts from './accounts.js';
 
 const start = {
   createView(request, response) {
+    const loggedInUser = accounts.getCurrentUser(request);
     logger.info("Start page loading!");
-    
-    const viewData = {
-      title: "Welcome to the Isaac's PC World app!",
-      info: appStore.getAppInfo(),
-      favourites: computerStore.getComputer('fav')
-    };
-    
-    //logger.debug(viewData);
-    response.render('start', viewData);   
+
+    if (loggedInUser) {
+      const viewData = {
+        title: 'PC World',
+        fullname: `${loggedInUser.firstName} ${loggedInUser.lastName}`,
+        computers: computerStore.getAllComputers ? computerStore.getAllComputers() : (computerStore.getComputers ? computerStore.getComputers() : []),
+        apps: appStore.getAllApps ? appStore.getAllApps() : (appStore.getApps ? appStore.getApps() : []),
+      };
+      response.render('start', viewData);
+    } else {
+      response.redirect('/');
+    }
   },
+
 };
 
 export default start;

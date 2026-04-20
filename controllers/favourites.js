@@ -2,8 +2,24 @@
 
 import logger from "../utils/logger.js";
 import computerStore from "../models/computer-store.js";
+import accounts from './accounts.js';
 
 const favourites = {
+  createView(request, response) {
+    const loggedInUser = accounts.getCurrentUser(request);
+    if (!loggedInUser) {
+      return response.redirect('/');
+    }
+    // Get the favourites category (id: 'fav')
+    const favouritesCategory = computerStore.getComputer('fav');
+    const viewData = {
+      title: 'Your Favourites',
+      fullname: loggedInUser.firstName + ' ' + loggedInUser.lastName,
+      singleProduct: favouritesCategory,
+      isFavourites: true
+    };
+    response.render('store', viewData);
+  },
   async add(request, response) {
     const productId = request.params.id;
     logger.info(`Add to favourites: ${productId}`);

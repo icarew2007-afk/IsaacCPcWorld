@@ -12,8 +12,15 @@ import about from './controllers/about.js';
 import store from './controllers/store.js';
 import favourites from './controllers/favourites.js';
 import computerStore from './models/computer-store.js';
+import accounts from './controllers/accounts.js';
 
-router.get('/', start.createView);
+router.get('/', accounts.index);
+router.get('/login', accounts.login);
+router.get('/signup', accounts.signup);
+router.get('/logout', accounts.logout);
+router.post('/register', accounts.register);
+router.post('/authenticate', accounts.authenticate);
+router.get('/start', start.createView);
 router.get('/dashboard', dashboard.createView);
 router.get('/about', about.createView);
 router.get('/computer/:id', store.createView);

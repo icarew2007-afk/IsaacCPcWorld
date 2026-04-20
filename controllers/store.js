@@ -1,7 +1,7 @@
 'use strict';
 
 import logger from '../utils/logger.js';
-
+import accounts from './accounts.js';
 import computerStore from '../models/computer-store.js';
 import { v4 as uuidv4 } from 'uuid';
 
@@ -22,22 +22,19 @@ const store = {
     response.redirect('/computer/' + categoryId);
   },
   createView(request, response) {
-    const productId = request.params.id;
-    logger.debug(`Product id = ${productId}`);
-
-    const product = computerStore.getComputer(productId);
+    const categoryId = request.params.id;
+    const loggedInUser = accounts.getCurrentUser(request);
+    logger.debug('Category id = ' + categoryId);
 
     const viewData = {
-      title: 'Product',
-      // provide both names so existing templates/partials keep working
-      singleProduct: product,
-      singlePlaylist: product,
-      isFavourites: product && product.id === 'fav'
+      title: 'Computer Category',
+      category: computerStore.getComputer(categoryId),
+      fullname: loggedInUser ? loggedInUser.firstName + ' ' + loggedInUser.lastName : null,
     };
-  
 
-    response.render('store', viewData);
+    response.render('computer', viewData);
   },
+
 
   addProduct(request, response) {
     const productId = request.params.id;

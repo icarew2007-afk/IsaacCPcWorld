@@ -103,6 +103,17 @@ const computerStore = {
       this.store.db.write();
     }
   },
+  getUserComputers(userid) {
+    return this.store.findBy(this.collection, (computer => computer.userid === userid));
+  },
+
+  searchUserComputers(search, userid) {
+    return this.store.findBy(
+      this.collection,
+      (computer => computer.userid === userid && computer.title && computer.title.toLowerCase().includes(search.toLowerCase()))
+    );
+  }
+
 
 };
 

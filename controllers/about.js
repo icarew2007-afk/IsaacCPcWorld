@@ -2,16 +2,26 @@
 
 import logger from "../utils/logger.js";
 import getAppInfo from "../models/employee.js";
+import accounts from './accounts.js';
 
 const about = {
   createView(request, response) {
-    logger.info("About page loading!");
+    const loggedInUser = accounts.getCurrentUser(request);
+    logger.info('About page loading!');
 
-    const employees = getAppInfo.getAppInfo();
-      
+    const viewData = {
+      title: 'About the Employee App',
+      fullname: loggedInUser ? `${loggedInUser.firstName} ${loggedInUser.lastName}` : '',
+      appInfo: getAppInfo(),
+    };
 
-    response.render("about", { employee: employees });
+    if (loggedInUser) {
+      response.render('about', viewData);
+    } else {
+      response.redirect('/');
+    }
   },
+
 };
 
 export default about;
