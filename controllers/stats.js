@@ -2,6 +2,7 @@
 import logger from "../utils/logger.js";
 import computerStore from "../models/computer-store.js";
 import accounts from './accounts.js';
+import userStore from '../models/user-store.js';
 const stats = {
     createView(request, response) {
       const loggedInUser = accounts.getCurrentUser(request);

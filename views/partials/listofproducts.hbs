@@ -1,38 +1,15 @@
-{{#if singleProduct.products}}
-  <form class="ui form" action="/computer/{{singleProduct.id}}/updateproducts" method="POST">
-  <div class="ui three stackable cards">
-    {{#each singleProduct.products}}
-      <div class="card">
-        <div class="content">
-          {{#if image}}
-            <div class="ui centered image">
-              <img src="{{image}}" alt="{{title}}">
-            </div>
-          {{/if}}
-          <div class="header">{{title}}</div>
-          <div class="meta">{{brand}}</div>
-          <div class="description">
-            
-          </div>
-        </div>
-        <div class="extra content">
-          <button type="button" class="ui mini icon button add-favourite-button" data-id="{{id}}" title="Add to favourites">
-            <i class="heart outline icon"></i>
-          </button>
-          <button type="button" class="ui mini icon button delete-product-button" data-id="{{id}}" title="Delete product">
-            <i class="trash icon"></i>
-          </button>
-          <a href="/computer/{{../singleProduct.id}}/editproduct/{{id}}" class="ui mini icon button" title="Edit product">
-            <i class="edit icon"></i>
-          </a>
-        </div>
-      </div>
-    {{/each}}
-  </div>
-  </form>
-{{else}}
-  <h3 class="ui message">
-    Empty product list!
-  </h3>
+<section class="ui left aligned middle aligned segment">
 
-{{/if}}
+  {{#if category.products}}
+    <div class="ui centered cards">
+      {{#each category.products}}
+        {{> productCard}}
+      {{/each}}
+    </div>
+  {{else}}
+    <h3 class="ui message">
+      Empty product list!
+    </h3>
+  {{/if}}
+
+</section>

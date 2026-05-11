@@ -21,9 +21,17 @@ const computerStore = {
     this.store.addCollection(this.collection, category);
   },
 
-  addComputer(id, computer) {
-    computer.id = id;
-    return this.store.addItem(this.collection, computer);
+  async addComputer(id, computer, file, response) {
+    try {
+      computer.id = id;
+      const cloudinaryResult = await this.store.addToCloudinary(file);
+      computer.image = cloudinaryResult.url;
+      await this.store.addItem(this.collection, computer);
+      response();
+    } catch (error) {
+      logger.error("Error processing computer:", error);
+      response(error);
+    }
   },
 
   async addToFavourites(productId) {

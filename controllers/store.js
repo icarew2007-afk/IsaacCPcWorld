@@ -26,27 +26,45 @@ const store = {
     const loggedInUser = accounts.getCurrentUser(request);
     logger.debug('Category id = ' + categoryId);
 
+    const category = computerStore.getComputer(categoryId);
     const viewData = {
       title: 'Computer Category',
-      category: computerStore.getComputer(categoryId),
+      category: category,
+      singlePlaylist: category, // for compatibility with existing template
       fullname: loggedInUser ? loggedInUser.firstName + ' ' + loggedInUser.lastName : null,
     };
 
-    response.render('computer', viewData);
+    response.render('store', viewData);
   },
 
 
   addProduct(request, response) {
-    const productId = request.params.id;
-    const product = computerStore.getComputer(productId);
+    const categoryId = request.params.id;
+    const category = computerStore.getComputer(categoryId);
+    let imageUrl = null;
+    if (request.files && request.files.image) {
+      const imageFile = request.files.image;
+      const path = `public/${imageFile.name}`;
+      // Save the file to the public directory
+      imageFile.mv(path, function(err) {
+        if (err) {
+          logger.error('Image upload failed:', err);
+        }
+      });
+      imageUrl = `/${imageFile.name}`;
+    }
     const newProduct = {
       id: uuidv4(),
-      title: request.body.title,
-      artist: request.body.artist,
+      title: request.body.product,
+      brand: request.body.brand,
+      image: imageUrl
     };
-    computerStore.addProduct(newProduct);
-    response.redirect('/computer/' + productId);
-},
+    if (category && Array.isArray(category.products)) {
+      category.products.push(newProduct);
+      computerStore.store.db.write();
+    }
+    response.redirect('/computer/' + categoryId);
+  },
 deleteProduct(request, response) {
     const productId = request.params.id;
     logger.debug(`Deleting Product ${productId}`);

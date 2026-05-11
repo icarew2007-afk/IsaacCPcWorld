@@ -22,10 +22,10 @@
 
     <p class="ui small">Browse products in this category. Click the heart to add a product to your favourites without leaving the page.</p>
 
-    {{> listofproducts}}
+  {{> listofproducts category=category}}
   </div>
 
   <section>
-    {{> addproducts}}
+    {{> addproducts id=category.id}}
   </section>
 </section>

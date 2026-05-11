@@ -1,7 +1,7 @@
 'use strict';
 
 import logger from "../utils/logger.js";
-import getAppInfo from "../models/employee.js";
+import employee from "../models/employee.js";
 import accounts from './accounts.js';
 
 const about = {
@@ -12,7 +12,7 @@ const about = {
     const viewData = {
       title: 'About the Employee App',
       fullname: loggedInUser ? `${loggedInUser.firstName} ${loggedInUser.lastName}` : '',
-      appInfo: getAppInfo(),
+      appInfo: employee.getAppInfo(),
     };
 
     if (loggedInUser) {

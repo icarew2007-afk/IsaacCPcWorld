@@ -1,0 +1,25 @@
+<div class="ui card">
+  <div class="image" style="background:#f9f9f9;display:flex;align-items:center;justify-content:center;height:180px;">
+    <img src="{{image}}" alt="{{title}}" style="max-height:160px;object-fit:contain;max-width:100%;">
+  </div>
+  <div class="content">
+    <div class="header" style="font-size:1.15em;">{{title}}</div>
+    <div class="meta" style="color:#888;">{{brand}}</div>
+    {{#if price}}
+      <div class="description" style="margin-top:.5em;font-weight:bold;">
+        €{{price}}
+      </div>
+    {{/if}}
+  </div>
+  <div class="extra content" style="display:flex;gap:.5em;align-items:center;">
+    <button type="button" class="ui mini icon button add-favourite-button" data-id="{{id}}" title="Add to favourites">
+      <i class="heart outline icon"></i>
+    </button>
+    <a href="/computer/{{../id}}/editproduct/{{id}}" class="ui mini icon button" title="Edit product">
+      <i class="edit icon"></i>
+    </a>
+    <button type="button" class="ui mini icon button delete-product-button" data-id="{{id}}" title="Delete product">
+      <i class="trash icon"></i>
+    </button>
+  </div>
+</div>

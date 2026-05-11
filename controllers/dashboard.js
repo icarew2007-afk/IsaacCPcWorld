@@ -75,7 +75,7 @@ const dashboard = {
         date: timestamp
       };
 
-      computerStore.addComputer(newCategory);
+      computerStore.addCategory(newCategory);
       response.redirect('/dashboard');
     },
 
